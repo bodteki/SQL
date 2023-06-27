@@ -1,1 +1,11 @@
+Exercise #1:
+Identify groups of goods that were not purchased in 2005
+
+SELECT good_type_name
+FROM  GoodTypes
+WHERE good_type_id NOT IN
+(SELECT good_type_id from GoodTypes
+JOIN Goods ON good_type_id =type 
+JOIN Payments ON good_id=good 
+WHERE  YEAR(date) = 2005);
 
