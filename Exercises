@@ -20,3 +20,13 @@ WHERE YEAR(date)=2005
 GROUP BY good_type_name;
 
 Exercise #3:
+Print the names of the passengers who flew to Warsaw on the TU-134
+
+SELECT DISTINCT name 
+FROM Passenger
+JOIN Pass_in_trip
+ON Passenger.id = Pass_in_trip.passenger 
+JOIN Trip
+ON Pass_in_trip.trip = Trip.id
+WHERE town_to = 'Warsaw' AND plane = 'TU-134'; 
+
