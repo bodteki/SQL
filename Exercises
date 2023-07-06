@@ -9,3 +9,14 @@ JOIN Goods ON good_type_id =type
 JOIN Payments ON good_id=good 
 WHERE  YEAR(date) = 2005);
 
+Exercise #2:
+Find out how much was spent on each product group in 2005. Write down the name of the group and the amount
+
+SELECT good_type_name, SUM(amount*unit_price) as costs
+FROM GoodTypes
+JOIN Goods ON good_type_id=type
+JOIN Payments ON Goods.good_id = Payments.good
+WHERE YEAR(date)=2005
+GROUP BY good_type_name;
+
+Exercise #3:
