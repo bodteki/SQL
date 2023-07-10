@@ -30,3 +30,12 @@ JOIN Trip
 ON Pass_in_trip.trip = Trip.id
 WHERE town_to = 'Warsaw' AND plane = 'TU-134'; 
 
+#4 
+Find the average cost of caviar. A database contains data on purchases of red caviar and black caviar.
+
+SELECT AVG(unit_price) as cost
+FROM Payments
+WHERE good IN
+(SELECT good_id FROM  Goods
+WHERE good_name LIKE "%caviar")
+
