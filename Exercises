@@ -39,3 +39,35 @@ WHERE good IN
 (SELECT good_id FROM  Goods
 WHERE good_name LIKE "%caviar")
 
+#5 
+Find the most expensive delicacy (delicacies) and output its price
+
+SELECT good_name, unit_price
+from Goods
+JOIN Payments
+ON payments.good = goods.good_id
+JOIN GoodTypes
+ON goods.type = GoodTypes.good_type_id
+WHERE Payments.unit_price =
+(SELECT MAX(unit_price)
+FROM  Payments
+JOIN Goods
+ON payments.good = Goods.good_id 
+JOIN GoodTypes
+ON Goods.type = GoodTypes.good_type_id 
+WHERE GoodTypes.good_type_name = 'delicacies');
+
+
+#6
+Print the name of the subjects taught by Romashkin P.P. ?
+
+SELECT name as subjects 
+FROM Subject
+JOIN Schedule
+ON Subject.id = Schedule.subject
+JOIN Teacher
+ON Teacher.id = Schedule.teacher 
+WHERE Teacher.last_name = 'Romashkin'
+AND Teacher.first_name LIKE 'P%' 
+AND Teacher.middle_name LIKE 'P%';
+
