@@ -71,3 +71,24 @@ WHERE Teacher.last_name = 'Romashkin'
 AND Teacher.first_name LIKE 'P%' 
 AND Teacher.middle_name LIKE 'P%';
 
+#7
+Print the surnames of the teachers who teach Physical Culture. Sort the teachers by surname.
+
+SELECT last_name
+FROM Teacher
+JOIN Schedule
+ON Teacher.id = Schedule.teacher
+JOIN Subject
+ON Schedule.subject =Subject.id 
+WHERE Subject.name = 'Physical Culture'
+ORDER BY last_name ASC; 
+
+#8
+In which classes will the "Krauze" teacher introduce classes ?
+
+SELECT DISTINCT name FROM Class
+JOIN Schedule
+ON Class.id = Schedule.class 
+JOIN Teacher
+ON Schedule.teacher = Teacher.id
+WHERE last_name = 'Krauze';
