@@ -111,3 +111,21 @@ JOIN Class
 ON Student_in_class.class = Class.id
 GROUP BY class.name
 ORDER BY count DESC
+
+#11
+What percentage of students are in class 10 A ?
+
+SELECT COUNT(student)*100/(SELECT COUNT(student) FROM Student_in_class) as percent
+FROM Student_in_class
+JOIN Class
+ON Student_in_class.class = class.id
+WHERE name = '10 A'
+
+#12
+What percentage of students were born in the year 1995? Round the result to the nearest whole number
+
+SELECT FLOOR(COUNT(id)*100/(SELECT COUNT(id) FROM Student)) AS percent 
+FROM Student
+WHERE YEAR(birthday) = '2000'
+
+
