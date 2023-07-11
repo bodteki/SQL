@@ -92,3 +92,22 @@ ON Class.id = Schedule.class
 JOIN Teacher
 ON Schedule.teacher = Teacher.id
 WHERE last_name = 'Krauze';
+
+#9
+How many classes did Krauze attend on 30 August 2019?
+
+SELECT COUNT(subject) as count
+FROM Schedule
+JOIN Teacher
+ON Schedule.teacher = Teacher.id
+WHERE last_name = 'Krauze' AND date = '2019-08-30'
+
+#10
+Output the occupancy of the classes in descending order
+
+SELECT name, COUNT(student) as count
+FROM Student_in_class
+JOIN Class
+ON Student_in_class.class = Class.id
+GROUP BY class.name
+ORDER BY count DESC
